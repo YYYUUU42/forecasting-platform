@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.WeatherDataMapper">
+
+    <resultMap id="BaseResultMap" type="org.example.model.entity.WeatherData">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="vapor" column="vapor" jdbcType="VARCHAR"/>
+        <result property="precipitation" column="precipitation" jdbcType="VARCHAR"/>
+        <result property="dbz" column="dbz" jdbcType="VARCHAR"/>
+        <result property="hgtWind" column="hgt_wind" jdbcType="VARCHAR"/>
+        <result property="liushaPortStation" column="liusha_port_station" jdbcType="VARCHAR"/>
+        <result property="liushaPortProfile" column="liusha_port_profile" jdbcType="VARCHAR"/>
+        <result property="huguangStation" column="huguang_station" jdbcType="VARCHAR"/>
+        <result property="huguangProfile" column="huguang_profile" jdbcType="VARCHAR"/>
+        <result property="yangjiangStation" column="yangjiang_station" jdbcType="VARCHAR"/>
+        <result property="yangjiangProfile" column="yangjiang_profile" jdbcType="VARCHAR"/>
+        <result property="time" column="time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <select id="searchData" resultType="org.example.model.vo.WeatherVO">
+        select * from ( select distinct  vapor,precipitation,dbz,hgt_wind,liusha_port_station,
+        liusha_port_profile,huguang_station,huguang_profile, yangjiang_station, yangjiang_profile, time
+        from weather_data
+        <where>
+            <if test="vapor != null">
+                vapor = #{vapor}
+            </if>
+            <if test="precipitation != null">
+                precipitation = #{precipitation}
+            </if>
+            <if test="dbz != null">
+                dbz = #{dbz}
+            </if>
+            <if test="hgtWind != null">
+                hgt_wind = #{hgtWind}
+            </if>
+            <if test="liushaPortStation != null">
+                liusha_port_station = #{liushaPortStation}
+            </if>
+            <if test="liushaPortProfile != null">
+                liusha_port_profile = #{liushaPortProfile}
+            </if>
+            <if test="huguangStation != null">
+                huguang_station = #{huguangStation}
+            </if>
+            <if test="huguangProfile != null">
+                huguang_profile = #{huguangProfile}
+            </if>
+            <if test="yangjiangStation != null">
+                yangjiang_station = #{yangjiangStation}
+            </if>
+            <if test="yangjiangProfile != null">
+                yangjiang_profile = #{yangjiangProfile}
+            </if>
+            <if test="time != null">
+                time = #{time}
+            </if>
+        </where>
+        order by time desc)as temp
+        limit 7
+    </select>
+
+
+</mapper>

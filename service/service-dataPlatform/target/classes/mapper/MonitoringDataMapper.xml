@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.MonitoringDataMapper">
+
+    <resultMap id="BaseResultMap" type="org.example.model.entity.MonitoringData">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="pointId" column="point_id" jdbcType="BIGINT"/>
+            <result property="cellDensity" column="cell_density" jdbcType="VARCHAR"/>
+            <result property="nitrateNitrogen" column="nitrate_nitrogen" jdbcType="VARCHAR"/>
+            <result property="nitriteNitrogen" column="nitrite_nitrogen" jdbcType="VARCHAR"/>
+            <result property="ammoniaNitrogen" column="ammonia_nitrogen" jdbcType="VARCHAR"/>
+            <result property="phosphate" column="phosphate" jdbcType="VARCHAR"/>
+            <result property="silicate" column="silicate" jdbcType="VARCHAR"/>
+            <result property="chlorophyll" column="chlorophyll" jdbcType="VARCHAR"/>
+            <result property="salinity" column="salinity" jdbcType="VARCHAR"/>
+            <result property="temperature" column="temperature" jdbcType="VARCHAR"/>
+            <result property="dissolvedOxygen" column="dissolved_oxygen" jdbcType="VARCHAR"/>
+            <result property="ph" column="pH" jdbcType="VARCHAR"/>
+            <result property="flowRate" column="flow_rate" jdbcType="VARCHAR"/>
+            <result property="time" column="time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,point_id,
+        cell_density,nitrate_nitrogen,nitrite_nitrogen,
+        ammonia_nitrogen,phosphate,silicate,
+        chlorophyll,salinity,temperature,
+        dissolved_oxygen,pH,flow_rate,
+        `time`
+    </sql>
+
+
+</mapper>
